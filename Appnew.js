@@ -1,7 +1,10 @@
 import { useState } from "react";
+import React from "react";
 import "./style.css";
 import BarChart from "./components/BarChart";
 import Doughnut from "./components/Doughnut";
+import StackedBarChart from './components/StackedBar';
+import { userData1 } from './data';
 import { UserData } from "./Datanew";
 
 function App() {
@@ -12,12 +15,13 @@ function App() {
         label: "Progress Status",
         data: UserData.map((data) => data.Total),
         backgroundColor: [
-          "#FF6969",
-          "#FFD3B0",
-          "#A6D0DD"
+          "#e31010",
+          "#f0d405",
+          "#087306"
         ],
-        borderColor: "black",
-        borderWidth: 1,
+        borderColor: "white",
+        borderWidth: 1.2,
+        barPercentage: 0.6
       },
     ],
   });
@@ -26,13 +30,19 @@ function App() {
 
   return (
     <div className="App">
-      <div className="bar" style={{ width: 500 }}>
+      <div className="bar" style={{ width: 400 }}>
         <BarChart chartData={userData} />
       </div>
       
-      <div className="doughnut" style={{ width: 400 }}>
+      <div className="doughnut" style={{ width: 300 }}>
         <Doughnut chartData={userData} />
       </div>
+
+      <div className="StackedBar" style={{ width: 1000 }}>
+      <h1>Progress status Eventwise </h1>
+      <StackedBarChart data={userData1} />
+      </div>
+
     </div>
   );
 }
